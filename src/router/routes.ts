@@ -1,8 +1,10 @@
 import {RouteRecordRaw} from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
+import BIView from "../views/BIView/FormView.vue";
 
-export const routes: Array<RouteRecordRaw> = [{
-    path: '/hello',
-    name: "hello",
-    component: HelloWorld,
-}];
+export const routes: Array<RouteRecordRaw> = [
+    {
+        path: '/',
+        name: "BIData",
+        component: BIView,
+    }
+    ];
