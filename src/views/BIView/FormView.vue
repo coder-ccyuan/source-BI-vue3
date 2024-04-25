@@ -2,7 +2,7 @@
   <a-row>
     <a-col :span="12">
       <div class="form">
-        <a-textarea :rows="6" placeholder="输入分析目标" :maxlength="100" show-count/>
+        <a-textarea v-model="formData.goal" :rows="6" placeholder="输入分析目标" :maxlength="100" show-count/>
         <br>
         <a-select
             ref="select"
@@ -33,13 +33,7 @@
       </div>
     </a-col>
     <a-col :span="12">
-      <div>
-        fasdf
-        fasdf
-        asdfb
-        <br>
-        fasdfds
-      </div>
+  <EchartsTest/>
     </a-col>
   </a-row>
 </template>
@@ -48,6 +42,7 @@ import {reactive, ref} from 'vue';
 import {UploadOutlined} from '@ant-design/icons-vue';
 import type {UploadProps} from 'ant-design-vue';
 import {ChartControllerService} from "../../../api";
+import EchartsTest from "../../components/EchartsTest.vue";
 
 const formData = reactive({
   file: null,
@@ -87,7 +82,7 @@ const handleUpload = async () => {
   });
   uploading.value = true;
    var res=await ChartControllerService.analysisUsingPost(formData.file,formData.goal,formData.type);
-   if (res===200){
+   if (res.code===0){
      uploading.value=false;
    }
 };
